@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Todo from "./Todo";
-import './App.css';
 
 class TodoList extends Component {
     onTextClick(id){
