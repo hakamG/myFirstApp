@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import Todo from "./Todo";
+import React from 'react';
+import Todo from './Todo';
 
-class TodoList extends Component {
-    onTextClick(id){
-        this.props.onTextClick(id);
-    }
-    onDeleteTodo(id){
-        this.props.onDeleteTodo(id);
-    }
+const TodoList = (props) => {
 
-    render() {
-        const todos = this.props.todos.map((todo,i) =>
-            <Todo key={i} checked={todo.finished} text={todo.text} onTextClick={this.onTextClick.bind(this)} id={todo.id} onDeleteTodo={this.onDeleteTodo.bind(this)}/>);
-        return (
-            <ul class="list-unstyled">
-              {todos}
-            </ul>
-        );
-    }
-}
+  const { onTextClick, onDeleteTodo } = props;
+
+  return (
+    <ul class="list-unstyled">
+      {props.todos.map((todo, i) =>
+        <Todo
+          key={i}
+          todo={todo}
+          onTextClick={onTextClick}
+          onDeleteTodo={onDeleteTodo}
+        />,
+      )
+      }
+    </ul>
+  );
+};
 
 export default TodoList;
