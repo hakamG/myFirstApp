@@ -41,10 +41,6 @@ class App extends Component {
   }
 
   onAddTodo() {
-    this.addTodo();
-  }
-
-  addTodo() {
     const todos = this.state.todos;
     todos.push({
       text: this.state.textArea,
@@ -89,11 +85,10 @@ class App extends Component {
                   todos={todos}
                 />
                 <div
-                  class="todo-footer"
-                >
-                  <strong><span
-                    class="count-todos"
-                  ></span></strong>{`Items Left to do: ${todos.filter((todo) => { return !todo.finished; }).length}`}
+                  class="todo-footer">
+                  <strong>
+                    <span class="count-todos"></span>
+                  </strong>{`Items Left to do: ${todos.filter((todo) => { return !todo.finished; }).length}`}
                 </div>
               </div>
             </div>
