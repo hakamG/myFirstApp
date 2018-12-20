@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TodoList from './components/TodoList';
 import { connect } from 'react-redux';
 import { addTodo, updateTextArea, deleteTodo, toggleStatus } from './actions/todo.action';
-import { bindActionCreators } from 'redux';
+import { Button } from 'reactstrap';
 
 class App extends Component {
 
@@ -46,11 +46,11 @@ class App extends Component {
                     onChange={this.onTextAreaChange}
                     value={textArea}
                   ></textarea>
-                    <button
-                      className="btn btn-outline-success add-todo"
+                    <Button
+                      color="danger"
                       onClick={this.props.addTodo}
                     >Add Todo
-                    </button>
+                    </Button>
                   </div>
                   <hr />
                   <TodoList
