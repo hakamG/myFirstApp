@@ -6,10 +6,17 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import store from './store';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import AddNewTodo from './components/AddNewTodo';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <div>
+        <Route exact path="/" component={App} />
+        <Route path="/new" component={AddNewTodo} />
+      </div>
+    </Router>
   </Provider>,
   document.getElementById('root'),
 );

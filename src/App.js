@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import TodoList from './components/TodoList';
 import { connect } from 'react-redux';
 import { addTodo, updateTextArea, deleteTodo, toggleStatus } from './actions/todo.action';
+import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
-    this.onTextAreaChange = this.onTextAreaChange.bind(this);
     this.onTodoToggleStatus = this.onTodoToggleStatus.bind(this);
     this.onDeleteTodo = this.onDeleteTodo.bind(this);
   }
@@ -21,12 +21,8 @@ class App extends Component {
     this.props.deleteTodo(id);
   }
 
-  onTextAreaChange(e) {
-    this.props.updateTextArea(e.target.value);
-  }
-
   render() {
-    const { textArea, todos } = this.props;
+    const { todos } = this.props;
     const notFinishedTodosCount = todos.filter(todo => !todo.finished).length;
 
     return (
@@ -38,22 +34,7 @@ class App extends Component {
               <div className="todolist not-done">
                 <div>
                   <h1>Todos</h1>
-                  <div>
-                  <textarea
-                    className="form-control"
-                    placeholder="New todo"
-                    rows="3"
-                    onChange={this.onTextAreaChange}
-                    value={textArea}
-                  ></textarea>
-                    <Button
-                      className="add-todo"
-                      outline
-                      color="success"
-                      onClick={this.props.addTodo}
-                    >Add Todo
-                    </Button>
-                  </div>
+                  <Link to="/new"><Button color="success" outline>Add New Todo</Button></Link>
                   <hr />
                   <TodoList
                     onDeleteTodo={this.onDeleteTodo}
