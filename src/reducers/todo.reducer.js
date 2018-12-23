@@ -16,9 +16,10 @@ const initialState = {
   ],
   textArea: '',
 };
-export default (state = initialState, payload) => {
+export default (state = initialState, action) => {
+  const {type, payload} = action;
 
-  switch (payload.type) {
+  switch (type) {
     case ADD_TODO: {
       const newTodo = {
         text: state.textArea,
@@ -30,17 +31,17 @@ export default (state = initialState, payload) => {
 
     case DELETE_TODO:
       return {
-        todos: [...state.todos.filter((todo) => { return todo.id !== payload.id;})],
+        todos: [...state.todos.filter((todo) => { return todo.id !== payload;})],
         textArea: state.textArea,
       };
 
     case UPDATE_TEXT_AREA:
 
-      return { ...state, textArea: payload.item };
+      return { ...state, textArea: payload };
 
     case TOGGLE_STATUS: {
       const todos = state.todos.map((todo, i) => {
-        if (todo.id === payload.id) {
+        if (todo.id === payload) {
           return {
             ...todo, finished: !todo.finished,
           };

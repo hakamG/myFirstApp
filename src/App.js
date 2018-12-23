@@ -27,7 +27,7 @@ class App extends Component {
 
   render() {
     const { textArea, todos } = this.props;
-    const notFinishedTodosCount = todos.filter((todo) => { return !todo.finished; }).length;
+    const notFinishedTodosCount = todos.filter(todo => !todo.finished).length;
 
     return (
       <div className="App-intro">
@@ -47,7 +47,9 @@ class App extends Component {
                     value={textArea}
                   ></textarea>
                     <Button
-                      color="danger"
+                      className="add-todo"
+                      outline
+                      color="success"
                       onClick={this.props.addTodo}
                     >Add Todo
                     </Button>

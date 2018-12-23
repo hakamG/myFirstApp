@@ -3,31 +3,31 @@ const DELETE_TODO = 'DELETE_TODO';
 const UPDATE_TEXT_AREA = 'UPDATE_TEXT_AREA';
 const TOGGLE_STATUS = 'TOGGLE_STATUS';
 
-const addTodo = (item) => {
+const addTodo = (payload) => {
   return {
     type: ADD_TODO,
-    item,
+    payload,
   };
 };
 
-const deleteTodo = (id) => {
+const deleteTodo = (payload) => {
   return {
     type: DELETE_TODO,
-    id,
+    payload,
   };
 };
 
-const updateTextArea = (item) => {
+const updateTextArea = (payload) => {
   return {
     type: UPDATE_TEXT_AREA,
-    item,
+    payload,
   };
 };
 
-const toggleStatus = (id) => {
+const toggleStatus = (payload) => {
   return {
     type: TOGGLE_STATUS,
-    id,
+    payload,
   };
 };
 
