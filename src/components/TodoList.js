@@ -5,7 +5,7 @@ const TodoList = (props) => {
   const { onTextClick, onDeleteTodo } = props;
 
   return (
-    <ul class="list-unstyled">
+    <ul className="list-unstyled">
       {props.todos.map((todo, i) =>
         <Todo
           key={i}
