@@ -33,17 +33,26 @@ const AddNewTodo = (props) => {
               value={textArea}
             ></textarea>
             </div>
-            <div>
-              <Button
-                outline
-                className="add-todo"
-                color="success"
-                onClick={onAddTodo}
-              >Add Todo
-              </Button>
-            </div>
-            <div>
-              <Link to="/">Back to Todo List</Link>
+            <div className="row">
+              <div className="col-md-10">
+                <Link to="/">
+                  <Button
+                    outline
+                    className="add-todo"
+                    color="warning"
+                  >Back to Todo List</Button>
+                </Link>
+              </div>
+              <div className="col-md-2">
+                <Button
+                  disabled={!(textArea.length > 0)}
+                  outline
+                  className="add-todo"
+                  color="success"
+                  onClick={onAddTodo}
+                >Add Todo
+                </Button>
+              </div>
             </div>
           </div>
         </div>
