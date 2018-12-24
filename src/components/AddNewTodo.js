@@ -10,6 +10,10 @@ const AddNewTodo = (props) => {
     addTodo();
     history.push('/');
   };
+  const onBack = () => {
+    updateTextArea('');
+    history.push('/');
+  };
 
   return (
     <div className="container">
@@ -35,13 +39,12 @@ const AddNewTodo = (props) => {
             </div>
             <div className="row">
               <div className="col-md-10">
-                <Link to="/">
-                  <Button
-                    outline
-                    className="add-todo"
-                    color="warning"
-                  >Back to Todo List</Button>
-                </Link>
+                <Button
+                  outline
+                  onClick={onBack}
+                  className="add-todo"
+                  color="warning"
+                >Back to Todo List</Button>
               </div>
               <div className="col-md-2">
                 <Button

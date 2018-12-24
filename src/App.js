@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import TodoList from './components/TodoList';
 import { connect } from 'react-redux';
-import { addTodo, updateTextArea, deleteTodo, toggleStatus } from './actions/todo.action';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
+
+import { addTodo, updateTextArea, deleteTodo, toggleStatus } from './actions/todo.action';
 
 class App extends Component {
 
