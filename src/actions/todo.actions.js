@@ -2,6 +2,7 @@ const ADD_TODO = 'ADD_TODO';
 const DELETE_TODO = 'DELETE_TODO';
 const UPDATE_TEXT_AREA = 'UPDATE_TEXT_AREA';
 const TOGGLE_STATUS = 'TOGGLE_STATUS';
+const UPDATE_TODO = 'UPDATE_TODO';
 
 const addTodo = (payload) => {
   return {
@@ -31,13 +32,22 @@ const toggleStatus = (payload) => {
   };
 };
 
+const updateTodo = (payload) => {
+  return {
+    type: UPDATE_TODO,
+    payload,
+  };
+};
+
 export {
   ADD_TODO,
   DELETE_TODO,
   UPDATE_TEXT_AREA,
   TOGGLE_STATUS,
+  UPDATE_TODO,
   addTodo,
   deleteTodo,
   updateTextArea,
   toggleStatus,
+  updateTodo,
 };

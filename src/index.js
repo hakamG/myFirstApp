@@ -8,14 +8,16 @@ import { Switch } from 'react-router';
 import './index.css';
 import App from './App';
 import store from './store';
-import AddNewTodo from './components/AddNewTodo';
+import NewTodo from './pages/newTodo';
+import EditTodo from './pages/editTodo';
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Switch>
         <Route exact path="/" component={App} />
-        <Route path="/new" component={AddNewTodo} />
+        <Route path="/new" component={NewTodo} />
+        <Route path="/todos/:id" component={EditTodo} />
       </Switch>
     </Router>
   </Provider>,
