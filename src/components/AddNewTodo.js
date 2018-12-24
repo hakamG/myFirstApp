@@ -1,13 +1,17 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { addTodo, updateTextArea } from '../actions/todo.action';
+import { addTodo, updateTextArea } from '../actions/todo.actions';
 import connect from 'react-redux/es/connect/connect';
 
 const AddNewTodo = (props) => {
   const { updateTextArea, textArea, addTodo, history } = props;
   const onAddTodo = () => {
     addTodo();
+    history.push('/');
+  };
+  const onBack = () => {
+    updateTextArea('');
     history.push('/');
   };
 
@@ -33,17 +37,25 @@ const AddNewTodo = (props) => {
               value={textArea}
             ></textarea>
             </div>
-            <div>
-              <Button
-                outline
-                className="add-todo"
-                color="success"
-                onClick={onAddTodo}
-              >Add Todo
-              </Button>
-            </div>
-            <div>
-              <Link to="/">Back to Todo List</Link>
+            <div className="row">
+              <div className="col-md-10">
+                <Button
+                  outline
+                  onClick={onBack}
+                  className="add-todo"
+                  color="warning"
+                >Back to Todo List</Button>
+              </div>
+              <div className="col-md-2">
+                <Button
+                  disabled={!(textArea.length > 0)}
+                  outline
+                  className="add-todo"
+                  color="success"
+                  onClick={onAddTodo}
+                >Add Todo
+                </Button>
+              </div>
             </div>
           </div>
         </div>

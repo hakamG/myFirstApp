@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO, UPDATE_TEXT_AREA, TOGGLE_STATUS } from '../actions/todo.action';
+import { ADD_TODO, DELETE_TODO, UPDATE_TEXT_AREA, TOGGLE_STATUS } from '../actions/todo.actions';
 
 const initialState = {
   todos: [
