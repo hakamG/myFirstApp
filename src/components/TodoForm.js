@@ -1,15 +1,9 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { addTodo, updateTextArea } from '../actions/todo.action';
-import connect from 'react-redux/es/connect/connect';
 
-const AddNewTodo = (props) => {
-  const { updateTextArea, textArea, addTodo, history } = props;
-  const onAddTodo = () => {
-    addTodo();
-    history.push('/');
-  };
+const TodoForm = (props) => {
+  const { updateTextArea, textArea, title, buttonText, onSubmit } = props;
 
   return (
     <div className="container">
@@ -17,7 +11,7 @@ const AddNewTodo = (props) => {
         <div className="col-md-2"></div>
         <div className="col-md-8">
           <div className="add-new">
-            <h1>Add New Todo</h1>
+            <h1>{title}</h1>
             <div>
             <textarea
               className="form-control"
@@ -26,7 +20,7 @@ const AddNewTodo = (props) => {
               onChange={(e) => {updateTextArea(e.target.value);}}
               onKeyPress={(e) => {
                 if (e.charCode === 13) {
-                  onAddTodo();
+                  onSubmit();
                   e.preventDefault();
                 }
               }}
@@ -38,8 +32,8 @@ const AddNewTodo = (props) => {
                 outline
                 className="add-todo"
                 color="success"
-                onClick={onAddTodo}
-              >Add Todo
+                onClick={onSubmit}
+              >{buttonText}
               </Button>
             </div>
             <div>
@@ -52,15 +46,4 @@ const AddNewTodo = (props) => {
   );
 };
 
-function mapStateToProps(state, props) {
-  return {
-    textArea: state.todo.textArea,
-  };
-}
-
-const mapDispatchToProps = {
-  addTodo,
-  updateTextArea,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddNewTodo);
+export default TodoForm;

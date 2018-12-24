@@ -7,14 +7,16 @@ import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import store from './store';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import AddNewTodo from './components/AddNewTodo';
+import NewTodo from './pages/newTodo';
+import EditTodo from './pages/editTodo';
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <div>
         <Route exact path="/" component={App} />
-        <Route path="/new" component={AddNewTodo} />
+        <Route path="/new" component={NewTodo} />
+        <Route path="/todos/:id" component={EditTodo} />
       </div>
     </Router>
   </Provider>,

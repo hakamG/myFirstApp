@@ -1,4 +1,10 @@
-import { ADD_TODO, DELETE_TODO, UPDATE_TEXT_AREA, TOGGLE_STATUS } from '../actions/todo.action';
+import {
+  ADD_TODO,
+  DELETE_TODO,
+  UPDATE_TEXT_AREA,
+  TOGGLE_STATUS,
+  UPDATE_TODO,
+} from '../actions/todo.action';
 
 const initialState = {
   todos: [
@@ -17,7 +23,7 @@ const initialState = {
   textArea: '',
 };
 export default (state = initialState, action) => {
-  const {type, payload} = action;
+  const { type, payload } = action;
 
   switch (type) {
     case ADD_TODO: {
@@ -31,9 +37,20 @@ export default (state = initialState, action) => {
 
     case DELETE_TODO:
       return {
-        todos: [...state.todos.filter((todo) => { return todo.id !== payload;})],
+        todos: [...state.todos.filter(todo => todo.id !== payload)],
         textArea: state.textArea,
       };
+
+    case UPDATE_TODO: {
+      const [existTodo] = state.todos.filter(todo => todo.id === parseInt(payload));
+      const updatedTodo = Object.assign({}, existTodo, { text: state.textArea });
+
+      return {
+        ...state,
+        todos: [...state.todos.filter(todo => todo.id !== parseInt(payload)), updatedTodo],
+        textArea: '',
+      };
+    }
 
     case UPDATE_TEXT_AREA:
 
