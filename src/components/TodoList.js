@@ -1,12 +1,11 @@
 import React from 'react';
 import Todo from './Todo';
 
-const TodoList = (props) => {
-  const { onTextClick, onDeleteTodo } = props;
+const TodoList = ({ onTextClick, onDeleteTodo, todos }) => {
 
   return (
     <ul className="list-unstyled">
-      {props.todos.map((todo, i) =>
+      {todos.map((todo, i) =>
         <Todo
           key={i}
           todo={todo}
