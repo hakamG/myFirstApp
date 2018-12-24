@@ -1,15 +1,21 @@
 import React from 'react';
 import { Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import { addTodo, updateTextArea } from '../actions/todo.actions';
 import connect from 'react-redux/es/connect/connect';
+import _ from 'lodash';
 
-const AddNewTodo = (props) => {
-  const { updateTextArea, textArea, addTodo, history } = props;
+import { addTodo, updateTextArea } from '../actions/todo.actions';
+
+const AddNewTodo = ({ updateTextArea, textArea, addTodo, history }) => {
+  const isTextValid = _.trim(textArea).length > 0;
+
   const onAddTodo = () => {
-    addTodo();
-    history.push('/');
+    if (isTextValid) {
+      addTodo();
+      history.push('/');
+    }
+
   };
+
   const onBack = () => {
     updateTextArea('');
     history.push('/');
@@ -48,7 +54,7 @@ const AddNewTodo = (props) => {
               </div>
               <div className="col-md-2">
                 <Button
-                  disabled={!(textArea.length > 0)}
+                  disabled={!isTextValid}
                   outline
                   className="add-todo"
                   color="success"
