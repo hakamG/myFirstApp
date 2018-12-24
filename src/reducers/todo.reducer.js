@@ -4,7 +4,7 @@ import {
   UPDATE_TEXT_AREA,
   TOGGLE_STATUS,
   UPDATE_TODO,
-} from '../actions/todo.action';
+} from '../actions/todo.actions';
 
 const initialState = {
   todos: [

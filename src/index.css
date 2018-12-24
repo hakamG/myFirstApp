@@ -57,3 +57,7 @@ li.ui-state-default:last-child {
 .add-todo {
   margin-top: 10px;
 }
+
+.ui-state-default label {
+  width: 200px;
+}

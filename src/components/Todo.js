@@ -2,8 +2,8 @@ import React from 'react';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-const Todo = (props) => {
-  const { onDeleteTodo, onTextClick, todo: { id, finished, text } } = props;
+const Todo = ({ onDeleteTodo, onTextClick, todo: { id, finished, text } }) => {
+
   return (
     <li className="ui-state-default">
       <div className={finished ? 'checked' : ''}>

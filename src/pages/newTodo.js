@@ -1,21 +1,26 @@
 import React from 'react';
 import TodoForm from '../components/TodoForm';
-import { addTodo, updateTextArea } from '../actions/todo.action';
-import {connect} from 'react-redux';
+import { addTodo, updateTextArea } from '../actions/todo.actions';
+import { connect } from 'react-redux';
 
-const NewTodo = (props) => {
-  const { history, addTodo, updateTextArea } = props;
+const NewTodo = ({ history, addTodo, updateTextArea, textArea }) => {
   const onSubmit = () => {
     addTodo();
+    history.push('/');
+  };
+  const backToMainList = () => {
+    updateTextArea('');
     history.push('/');
   };
 
   return (
     <TodoForm
-    title="Add New Todo"
-    buttonText="Add New Todo"
-    onSubmit={onSubmit}
-    updateTextArea={updateTextArea}
+      title="Add New Todo"
+      buttonText="Add New Todo"
+      onSubmit={onSubmit}
+      updateTextArea={updateTextArea}
+      onBackClick={backToMainList}
+      textArea={textArea}
     />
   );
 };
