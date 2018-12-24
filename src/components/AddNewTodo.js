@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { addTodo, updateTextArea } from '../actions/todo.action';
+import { addTodo, updateTextArea } from '../actions/todo.actions';
 import connect from 'react-redux/es/connect/connect';
 
 const AddNewTodo = (props) => {

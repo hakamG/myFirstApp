@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 
-import { addTodo, updateTextArea, deleteTodo, toggleStatus } from './actions/todo.action';
+import { addTodo, updateTextArea, deleteTodo, toggleStatus } from './actions/todo.actions';
 
 class App extends Component {
 
