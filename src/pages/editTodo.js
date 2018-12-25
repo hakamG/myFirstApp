@@ -7,9 +7,11 @@ const EditTodo = (props) => {
   const { history, textArea, updateTodo, updateTextArea, match: { params: { id } } } = props;
   const onSubmit = () => {
     updateTodo(id);
+    updateTextArea('');
     history.push('/');
   };
   const backToMainList = () => {
+    updateTextArea('');
     history.push('/');
   };
 

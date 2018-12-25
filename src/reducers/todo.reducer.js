@@ -22,6 +22,7 @@ const initialState = {
   ],
   textArea: '',
 };
+
 export default (state = initialState, action) => {
   const { type, payload } = action;
 
@@ -32,23 +33,24 @@ export default (state = initialState, action) => {
         finished: false,
         id: Date.now(),
       };
-      return { ...state, todos: [...state.todos, newTodo], textArea: '' };
+
+      return { ...state, todos: [...state.todos, newTodo] };
     }
 
     case DELETE_TODO:
       return {
+        ...state,
         todos: [...state.todos.filter(todo => todo.id !== payload)],
-        textArea: state.textArea,
       };
 
     case UPDATE_TODO: {
-      const [existTodo] = state.todos.filter(todo => todo.id === parseInt(payload));
-      const updatedTodo = Object.assign({}, existTodo, { text: state.textArea });
+      const { todos, textArea } = state;
+      const [existTodo] = todos.filter(todo => todo.id === parseInt(payload));
+      const updatedTodo = { ...existTodo, text: textArea };
 
       return {
         ...state,
         todos: [...state.todos.filter(todo => todo.id !== parseInt(payload)), updatedTodo],
-        textArea: '',
       };
     }
 
