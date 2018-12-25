@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 const NewTodo = ({ history, addTodo, updateTextArea, textArea }) => {
   const onSubmit = () => {
     addTodo();
+    updateTextArea('');
     history.push('/');
   };
   const backToMainList = () => {
