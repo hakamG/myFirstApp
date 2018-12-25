@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import { Button, Input } from 'reactstrap';
 import _ from 'lodash';
 
 const TodoForm = ({ updateTextArea, textArea, title, buttonText, onSubmit, onBackClick }) => {
@@ -10,10 +10,11 @@ const TodoForm = ({ updateTextArea, textArea, title, buttonText, onSubmit, onBac
       <div className="row">
         <div className="col-md-2"></div>
         <div className="col-md-8">
-          <div className="add-new">
-            <h1>{title}</h1>
+          <div className="add-new mt-4 px-4 pt-4 pb-2">
+            <h1 className="m-0 pb-4">{title}</h1>
             <div>
-            <textarea
+            <Input
+              type="textarea"
               className="form-control"
               placeholder="New todo"
               rows="3"
@@ -25,14 +26,14 @@ const TodoForm = ({ updateTextArea, textArea, title, buttonText, onSubmit, onBac
                 }
               }}
               value={textArea}
-            ></textarea>
+            ></Input>
             </div>
             <div className="row justify-content-between">
               <div className="col-auto mr-auto">
                 <Button
                   outline
                   onClick={onBackClick}
-                  className="add-todo"
+                  className="mt-2"
                   color="warning"
                 >Back to Todo List</Button>
               </div>
@@ -40,7 +41,7 @@ const TodoForm = ({ updateTextArea, textArea, title, buttonText, onSubmit, onBac
                 <Button
                   disabled={!isTextValid}
                   outline
-                  className="add-todo"
+                  className="mt-2"
                   color="success"
                   onClick={onSubmit}
                 >{buttonText}

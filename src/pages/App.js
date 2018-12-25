@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 
-import TodoList from './components/TodoList';
-import { addTodo, updateTextArea, deleteTodo, toggleStatus } from './actions/todo.actions';
+import TodoList from '../components/TodoList';
+import { addTodo, updateTextArea, deleteTodo, toggleStatus } from '../actions/todo.actions';
 
 class App extends Component {
 
@@ -32,9 +32,9 @@ class App extends Component {
           <div className="row">
             <div className="col-md-2"></div>
             <div className="col-md-8">
-              <div className="todolist not-done">
+              <div className="todolist not-done mt-4 px-4 pt-4 pb-2">
                 <div>
-                  <h1>Todos</h1>
+                  <h1 className="m-0 pb-4">Todos</h1>
                   <Link to="/new"><Button color="success" outline>Add New Todo</Button></Link>
                   <hr />
                   <TodoList
@@ -43,7 +43,7 @@ class App extends Component {
                     todos={todos}
                   />
                   <div
-                    className="todo-footer"
+                    className="todo-footer py-2 px-3"
                   >
                     <strong>
                       <span className="count-todos"></span>
