@@ -5,11 +5,11 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { Switch } from 'react-router';
 
-import './index.css';
-import App from './App';
+import './css/index.css';
+import App from './pages/App';
 import store from './store';
-import NewTodo from './pages/newTodo';
-import EditTodo from './pages/editTodo';
+import NewTodo from './pages/NewTodo';
+import EditTodo from './pages/EditTodo';
 
 ReactDOM.render(
   <Provider store={store}>

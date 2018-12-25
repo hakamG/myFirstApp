@@ -4,22 +4,14 @@ body {
 
 .todolist, .add-new {
   background-color: #FFF;
-  padding: 20px 20px 10px 20px;
-  margin-top: 30px;
 }
 
 .todolist h1, .add-new h1 {
-  margin: 0;
-  padding-bottom: 20px;
   text-align: center;
 }
 
 .form-control {
   border-radius: 0;
-}
-
-.todolist li button {
-  margin-left: 50px;
 }
 
 li.ui-state-default {
@@ -36,28 +28,15 @@ li.ui-state-default:last-child {
 .todo-footer {
   background-color: #F4FCE8;
   border-top: 1px solid #dee2e6;
-  margin: 0 -20px -10px -20px;
-  padding: 10px 20px;
-}
-
-#done-items li {
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
-  text-decoration: line-through;
-}
-
-#done-items li:last-child {
-  border-bottom: none;
+  margin: 0 -24px -10px -24px;
 }
 
 .checked label {
   text-decoration: line-through;
 }
 
-.add-todo {
-  margin-top: 10px;
-}
-
 .ui-state-default label {
   width: 200px;
 }
+
+
