@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { Switch } from 'react-router';
 
 import './css/index.css';
-import App from './pages/App';
+import Main from './pages/Main';
 import store from './store';
 import NewTodo from './pages/NewTodo';
 import EditTodo from './pages/EditTodo';
@@ -15,7 +15,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Switch>
-        <Route exact path="/" component={App} />
+        <Route exact path="/" component={Main} />
         <Route path="/new" component={NewTodo} />
         <Route path="/todos/:id" component={EditTodo} />
       </Switch>
