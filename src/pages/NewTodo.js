@@ -1,26 +1,28 @@
-import React from 'react';
-import TodoForm from '../components/TodoForm';
-import { addTodo, updateTextArea } from '../actions/todo.actions';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
+
+import Wizard from "../todos/wizard/components/Wizard";
+import { addTodo } from "../todos/list/list.actions";
+import { updateTextArea } from "../todos/wizard/wizard.actions";
 
 const NewTodo = ({ history, addTodo, updateTextArea, textArea }) => {
   const onSubmit = () => {
-    addTodo();
-    updateTextArea('');
-    history.push('/');
+    addTodo(textArea);
+    updateTextArea("");
+    history.push("/");
   };
   const backToMainList = () => {
-    updateTextArea('');
-    history.push('/');
+    updateTextArea("");
+    history.push("/");
   };
 
   return (
-    <TodoForm
+    <Wizard
       title="Add New Todo"
       buttonText="Add New Todo"
       onSubmit={onSubmit}
-      updateTextArea={updateTextArea}
       onBackClick={backToMainList}
+      placeholder="New todo"
       textArea={textArea}
     />
   );
@@ -28,13 +30,16 @@ const NewTodo = ({ history, addTodo, updateTextArea, textArea }) => {
 
 function mapStateToProps(state, props) {
   return {
-    textArea: state.todo.textArea,
+    textArea: state.wizard.textArea
   };
 }
 
 const mapDispatchToProps = {
   addTodo,
-  updateTextArea,
+  updateTextArea
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewTodo);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NewTodo);

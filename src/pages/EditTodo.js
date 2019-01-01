@@ -1,27 +1,40 @@
-import React from 'react';
-import TodoForm from '../components/TodoForm';
-import { updateTextArea, updateTodo } from '../actions/todo.actions';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
+import Wizard from "../todos/wizard/components/Wizard";
+import { updateTodo } from "../todos/list/list.actions";
+import { updateTextArea } from "../todos/wizard/wizard.actions";
 
-const EditTodo = (props) => {
-  const { history, textArea, updateTodo, updateTextArea, match: { params: { id } } } = props;
+const EditTodo = props => {
+  const {
+    history,
+    textArea,
+    updateTodo,
+    updateTextArea,
+    match: {
+      params: { id }
+    },
+    todos
+  } = props;
   const onSubmit = () => {
-    updateTodo(id);
-    updateTextArea('');
-    history.push('/');
+    updateTodo({ id, text: textArea });
+    updateTextArea("");
+    history.push("/");
   };
   const backToMainList = () => {
-    updateTextArea('');
-    history.push('/');
+    updateTextArea("");
+    history.push("/");
+  };
+  const getTodoText = () => {
+    return todos.filter(todo => todo.id === parseInt(id))[0].text;
   };
 
   return (
-    <TodoForm
+    <Wizard
       title="Edit Todo"
       buttonText="Save Todo"
       onSubmit={onSubmit}
-      updateTextArea={updateTextArea}
       onBackClick={backToMainList}
+      placeholder={getTodoText()}
       textArea={textArea}
     />
   );
@@ -29,13 +42,17 @@ const EditTodo = (props) => {
 
 function mapStateToProps(state, props) {
   return {
-    textArea: state.todo.textArea,
+    textArea: state.wizard.textArea,
+    todos: state.list.todos
   };
 }
 
 const mapDispatchToProps = {
   updateTodo,
-  updateTextArea,
+  updateTextArea
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditTodo);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EditTodo);
