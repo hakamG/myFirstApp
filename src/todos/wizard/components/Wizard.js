@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button, Input } from "reactstrap";
 import _ from "lodash";
 
 import { updateTextArea } from "../wizard.actions";
+import { Button, Textarea } from "@guestyci/atomic-design/dist/components";
 
 const Wizard = ({
   updateTextArea,
@@ -23,14 +23,12 @@ const Wizard = ({
           <div className="add-new mt-4 px-4 pt-4 pb-2">
             <h1 className="m-0 pb-4">{title}</h1>
             <div>
-              <Input
-                type="textarea"
-                className="form-control"
-                placeholder={placeholder}
-                rows="3"
+              <Textarea
                 onChange={e => {
                   updateTextArea(e.target.value);
                 }}
+                maxLength={100}
+                value={placeholder}
                 onKeyPress={e => {
                   if (e.charCode === 13) {
                     if (isTextValid) {
@@ -39,24 +37,17 @@ const Wizard = ({
                     e.preventDefault();
                   }
                 }}
-                value={textArea}
               />
             </div>
             <div className="row justify-content-between">
               <div className="col-auto mr-auto">
-                <Button
-                  outline
-                  onClick={onBackClick}
-                  className="mt-2"
-                  color="warning"
-                >
+                <Button onClick={onBackClick} className="mt-2" color="warning">
                   Back to Todo List
                 </Button>
               </div>
               <div className="col-auto">
                 <Button
                   disabled={!isTextValid}
-                  outline
                   className="mt-2"
                   color="success"
                   onClick={onSubmit}

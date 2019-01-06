@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Button } from "reactstrap";
+import {} from "reactstrap";
 
 import TodoList from "../todos/list/components/TodoList";
 import NotFinishedCounter from "../todos/notFinishedCounter/components/NotFinishedCounter";
+import { Button } from "@guestyci/atomic-design/dist/components";
 
 const Main = ({ todos }) => {
   return (
@@ -17,9 +18,7 @@ const Main = ({ todos }) => {
               <div>
                 <h1 className="m-0 pb-4">Todos</h1>
                 <Link to="/new">
-                  <Button color="success" outline>
-                    Add New Todo
-                  </Button>
+                  <Button color="success">Add New Todo</Button>
                 </Link>
                 <hr />
                 <TodoList />

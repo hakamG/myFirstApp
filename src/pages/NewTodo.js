@@ -22,7 +22,7 @@ const NewTodo = ({ history, addTodo, updateTextArea, textArea }) => {
       buttonText="Add New Todo"
       onSubmit={onSubmit}
       onBackClick={backToMainList}
-      placeholder="New todo"
+      placeholder=""
       textArea={textArea}
     />
   );
