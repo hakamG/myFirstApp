@@ -1,23 +1,58 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Todo from "./Todo";
 import { addTodo, deleteTodo, toggleStatus } from "../list.actions";
+import { Search } from "@guestyci/atomic-design/dist/components";
 
-const TodoList = ({ toggleStatus, deleteTodo, todos }) => {
-  return (
-    <ul className="list-unstyled">
-      {todos.map((todo, i) => (
-        <Todo
-          key={i}
-          todo={todo}
-          onTextClick={toggleStatus}
-          onDeleteTodo={deleteTodo}
-        />
-      ))}
-    </ul>
-  );
-};
+class TodoList extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      searchTxt: "",
+      filteredTodos: []
+    };
+    this.filterTodos = this.filterTodos.bind(this);
+  }
+  componentWillMount() {
+    this.setState({
+      filteredTodos: this.props.todos
+    });
+  }
+  filterTodos = () => {
+    let filteredTodos = this.props.todos;
+    const searchTxt = this.state.searchTxt;
+
+    filteredTodos = filteredTodos.filter(todo => {
+      let todoText = todo.text.toLowerCase();
+      return todoText.indexOf(searchTxt.toLowerCase()) !== -1;
+    });
+
+    return filteredTodos;
+  };
+  handleSearchChange = txt => {
+    this.setState({ searchTxt: txt });
+  };
+  render() {
+    const { toggleStatus, deleteTodo } = this.props;
+    let filteredTodos = this.filterTodos();
+    return (
+      <div>
+        <Search isOpen={true} onChange={this.handleSearchChange} />
+        <ul className="list-unstyled">
+          {filteredTodos.map((todo, i) => (
+            <Todo
+              key={i}
+              todo={todo}
+              onTextClick={toggleStatus}
+              onDeleteTodo={deleteTodo}
+            />
+          ))}
+        </ul>
+      </div>
+    );
+  }
+}
 
 function mapStateToProps(state, props) {
   return {

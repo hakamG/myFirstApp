@@ -1,3 +1,5 @@
+@import "../../node_modules/@guestyci/atomic-design/dist/style/style.css" ;
+
 body {
   background-color: #EEEEEE;
 }
@@ -28,7 +30,7 @@ li.ui-state-default:last-child {
 .todo-footer {
   background-color: #F4FCE8;
   border-top: 1px solid #dee2e6;
-  margin: 0 -24px -10px -24px;
+  margin: 0 -20px -10px -20px;
 }
 
 .checked label {
@@ -37,6 +39,11 @@ li.ui-state-default:last-child {
 
 .ui-state-default label {
   width: 200px;
+  display: inline-block;
+}
+
+.toggle-btn{
+  top: 5px;
 }
 
 

@@ -1,34 +1,43 @@
 import React from "react";
-import { Button } from "reactstrap";
+import {  } from "reactstrap";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
+
+import { Switch, Label, Button} from "@guestyci/atomic-design/dist/components";
 
 const Todo = ({ onDeleteTodo, onTextClick, todo: { id, finished, text } }) => {
   return (
     <li className="ui-state-default">
       <div className={classNames({ checked: finished })}>
-        <label
+        <Label
           onClick={() => {
             onTextClick(id);
           }}
         >
           {text}
-        </label>
+        </Label>
         <Link to={`/todos/${id}`}>
-          <Button className="ml-5" color="info" outline>
+          <Button className="ml-5" color="primary" >
             Edit
           </Button>
         </Link>
         <Button
           color="danger"
           className="ml-5"
-          outline
+          
           onClick={() => {
             onDeleteTodo(id);
           }}
         >
           Delete
         </Button>
+        <Switch
+        className="ml-5"
+          on={finished}
+          onChange={() => {
+            onTextClick(id);
+          }}
+        />
       </div>
     </li>
   );
